@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>CARRITO BORDAMITA</h1>
+
+    <div id="productos"></div> <div id="carrito">
+        <h2>Carrito de compras</h2>
+        <table border=1>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+            <tr>
+                <td id="total-producto"></td>
+                <td id="total-cantidad"></td>
+                <td id="total-subtotal"></td>
+            </tr>
+        </table>
+        <button onclick="vaciarCarrito()">Vaciar carrito</button>
+        <button onclick="mostrarResumenCompra()">Resumen compra</button>
+    
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

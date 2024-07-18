@@ -4,38 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito Bordamita</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
-    <h1>CARRITO BORDAMITA</h1>
+    <div class="container">
+        <h1 class="text-center mt-5">CARRITO BORDAMITA</h1>
 
-    <div id="productos"></div>
-    <div id="carrito">
-        <h2>Carrito de compras</h2>
-        <table id="tabla-carrito">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody id="tbody-carrito">
-                <!-- Aquí se agregarán los ítems del carrito -->
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="2"><strong>Total</strong></td>
-                    <td id="total-carrito"></td>
-                </tr>
-            </tfoot>
-        </table>
-        <button id="vaciar-carrito">Vaciar carrito</button>
-        <button id="resumen-compra">Resumen compra</button>
-        <div id="resumen-compra-detalle"></div>
+        <div id="productos" class="row mt-4"></div>
+        <div id="carrito" class="mt-4">
+            <h2 class="text-center">Carrito de compras</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th> <!-- Columna para botones de eliminar -->
+                    </tr>
+                </thead>
+                <tbody id="tbody-carrito">
+                    <!-- Aquí se agregarán los ítems del carrito -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Total</strong></td>
+                        <td id="total-carrito"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button id="vaciar-carrito" class="btn btn-danger">Vaciar carrito</button>
+            <button id="resumen-compra" class="btn btn-primary">Resumen compra</button>
+            <div id="resumen-compra-detalle"></div>
+        </div>
     </div>
 
+    <!-- jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

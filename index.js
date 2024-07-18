@@ -23,11 +23,15 @@ function mostrarProductos() {
 
     for (const [producto, precio] of Object.entries(productos)) {
         const elementoProducto = document.createElement("div");
-        elementoProducto.classList.add("producto");
+        elementoProducto.classList.add("col-md-4", "mb-4");
         elementoProducto.innerHTML = `
-            <h3>${producto}</h3>
-            <p>Precio: ${precio.toLocaleString('es-CO')} COP</p>
-            <button class="btn-agregar" data-producto="${producto}">Agregar</button>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${producto}</h5>
+                    <p class="card-text">Precio: ${precio.toLocaleString('es-CO')} COP</p>
+                    <button class="btn btn-primary btn-agregar" data-producto="${producto}">Agregar</button>
+                </div>
+            </div>
         `;
         contenedorProductos.appendChild(elementoProducto);
     }
@@ -81,12 +85,37 @@ function actualizarCarrito() {
             <td>${producto}</td>
             <td>${cantidad}</td>
             <td>${subtotal.toLocaleString('es-CO')} COP</td>
+            <td><button class="btn btn-danger btn-eliminar" data-producto="${producto}">Eliminar</button></td>
         `;
         tbodyCarrito.appendChild(fila);
     }
 
     const totalCarrito = document.getElementById("total-carrito");
     totalCarrito.textContent = total.toLocaleString('es-CO') + " COP";
+
+    // Event listeners para botones de eliminar
+    const botonesEliminar = document.querySelectorAll(".btn-eliminar");
+    botonesEliminar.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const producto = btn.getAttribute("data-producto");
+            eliminarProducto(producto);
+        });
+    });
+}
+
+function eliminarProducto(producto) {
+    if (carrito[producto]) {
+        const cantidad = carrito[producto];
+        const precio = productos[producto];
+        const subtotal = calcularSubtotal(precio, cantidad);
+        total -= subtotal;
+
+        delete carrito[producto];
+
+        actualizarCarrito();
+        guardarCarritoEnStorage();
+        alert(`Se eliminó ${producto} del carrito.`);
+    }
 }
 
 function guardarCarritoEnStorage() {
